@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_catalog/Pages/login_page.dart';
+import 'package:flutter_catalog/utils/routes.dart';
 import 'Pages/homepage.dart';
 import 'package:google_fonts/google_fonts.dart'; //added to use google fonts (pub.dev)
 
@@ -26,8 +27,8 @@ class MyApp extends StatelessWidget {
       routes: {
         //yeh rasta batata h ki is page ke baad kon sa page jaega
         "/": (context) => LoginPage(), //yeh starting address
-        "/home": (context) => HomePage(),
-        "/login": (context) => LoginPage(),
+        MyRoute.homeRoute: (context) => HomePage(),
+        MyRoute.loginRoute: (context) => LoginPage(),
         // "/login" : (context) => Login_Page(),
       },
     );

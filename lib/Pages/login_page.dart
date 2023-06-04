@@ -103,8 +103,7 @@ class _LoginPageState extends State<LoginPage> {
                         height: 20.0,
                       ),
                       Material(
-                        color: Colors
-                            .deepPurple, //material me hi color yeh sb add karo and decoration use n karo container me
+                        color: const Color.fromARGB(255, 108, 100, 251), //material me hi color yeh sb add karo and decoration use n karo container me
                         borderRadius:
                             BorderRadius.circular(changedButton ? 50 : 6),
                         child: InkWell(

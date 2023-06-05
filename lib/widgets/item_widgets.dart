@@ -4,9 +4,8 @@ import 'package:flutter_catalog/models/catalog.dart';
 class ItemWidgets extends StatelessWidget {
   final Items items;
 
-  const ItemWidgets({Key? key, required this.items})
-      : assert(items != null), //this will check whether my item is null or not
-        super(key: key);
+  const ItemWidgets({required this.items})
+      : super();
 
   @override
   Widget build(BuildContext context) {

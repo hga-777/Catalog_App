@@ -21,19 +21,18 @@ class _HomePageState extends State<HomePage> {
   loadData() async {
     //to retrive data from the json
     await Future.delayed(Duration(seconds: 2));
-    try{
-    final catalogJson =
-        await rootBundle.loadString("assets/files/catalog.json");
-    final decodedData = jsonDecode(catalogJson);
-    var productData = decodedData["products"];
-    CatalogModel.items = List.from(productData)
-        .map<Items>((items) => Items.fromMap(items))
-        .toList();
-    setState(() {});
-    } catch(error){
+    try {
+      final catalogJson =
+          await rootBundle.loadString("assets/files/catalog.json");
+      final decodedData = jsonDecode(catalogJson);
+      var productData = decodedData["products"];
+      CatalogModel.items = List.from(productData)
+          .map<Items>((items) => Items.fromMap(items))
+          .toList();
+      setState(() {});
+    } catch (error) {
       debugPrint("Error loading catalog data: $error");
     }
-
   }
 
   @override
@@ -46,16 +45,30 @@ class _HomePageState extends State<HomePage> {
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: (CatalogModel.items != null && CatalogModel.items.isNotEmpty)
-            ? ListView.builder(
-                //its like recycler view in which one can see things at once and other things after scrolling
-                itemCount: CatalogModel.items.length,
+            ? GridView.builder(
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 2,//this will give 2 elements in a row
+                    mainAxisSpacing: 18,//vertical spacing
+                    crossAxisSpacing: 18),  //horizonatal spacing
                 itemBuilder: (context, index) {
-                  return ItemWidgets(
-                    items: CatalogModel.items[index],
+                  final item = CatalogModel.items[index];
+                  return Card(
+                    clipBehavior: Clip.antiAlias, //for smooth edges for the clipped content
+                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+                    child: GridTile(
+                      header: Container(padding: EdgeInsets.all(12),child: Text(item.name , style: TextStyle(color: Colors.white),), 
+                      decoration: const BoxDecoration(color:  Color.fromARGB(255, 108, 100, 251),),),
+                      footer: Container(padding: EdgeInsets.all(12),child: Text(item.price.toString() , style: TextStyle(color: Colors.white),), 
+                      decoration: const BoxDecoration(color:  Color.fromARGB(255, 108, 100, 251),),),
+                      child: Image.network(item.image),
+                    ),
                   );
                 },
+                itemCount: CatalogModel.items.length,
               )
-            : CircularProgressIndicator(), 
+            : Center(
+                child: CircularProgressIndicator(),
+              ),
       ),
       drawer: MyDrawer(),
     );

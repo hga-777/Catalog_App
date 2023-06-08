@@ -55,16 +55,20 @@ class HomeDetailPage extends StatelessWidget {
               child: Container(
                 color: Colors.white,
                 width: context.screenWidth,
-                child: Column(
-                  children: [
-                    catalog.name.text.xl4
-                        .color(MyTheme.darkBluish)
-                        .bold
-                        .make(),
-                    catalog.desc.text.textStyle(context.captionStyle).xl.make(),
-                    10.heightBox,
-                  ],
-                ).py64(),
+                child: SingleChildScrollView(  //yeh krne se text scollable ho jaega
+                  child: Column(
+                    children: [
+                      catalog.name.text.xl4
+                          .color(MyTheme.darkBluish)
+                          .bold
+                          .make(),
+                      catalog.desc.text.textStyle(context.captionStyle).xl.make(),
+                      10.heightBox,
+                      "Hritik Gadrial is the universal king. He will chew ur meat alive".text.textStyle(context.captionStyle)
+                      .make(),
+                    ],
+                  ).py64(),
+                ),
               ),
             ))
           ],

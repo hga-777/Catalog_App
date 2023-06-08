@@ -29,6 +29,9 @@ class MyTheme {
         ),
       );
   static ThemeData darkTheme(BuildContext context) => ThemeData(
-    brightness: Brightness.dark,   //works when working in dark mode
-  );
+        brightness: Brightness.dark, //works when working in dark mode
+      );
+// colors
+  static Color creamColor = Color(0xfff5f5f5);
+  static Color darkBluish = Color.fromARGB(255, 20, 23, 199);
 }

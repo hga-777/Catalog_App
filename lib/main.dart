@@ -14,10 +14,11 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      themeMode: ThemeMode.system,
       theme: MyTheme.lightTheme(context),
       darkTheme: MyTheme.darkTheme(context),
       debugShowCheckedModeBanner: false, //yeh krne se side me jo debug likha h woh gayab ho jaega
-      initialRoute: "/home", //intial strting page
+      initialRoute: "/login", //intial strting page
       routes: {
         //yeh rasta batata h ki is page ke baad kon sa page jaega
         "/": (context) => LoginPage(), //yeh starting address

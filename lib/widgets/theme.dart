@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:velocity_x/velocity_x.dart';
 
 MaterialColor customPurpleColor = MaterialColor(0xFF6C64FB, {
   //this is added to make custom color (chatgpt)
@@ -21,17 +22,38 @@ class MyTheme {
             customPurpleColor, //primary Swatch is the color of appbar , button etc
         fontFamily: GoogleFonts.roboto()
             .fontFamily, // yeha change krne se saare jagah chnage ho jaega
-        appBarTheme: AppBarTheme(
+        cardColor: Colors.white,
+        canvasColor: creamColor,
+        appBarTheme: const AppBarTheme(
           color: Colors.white,
           elevation: 0.0,
           titleTextStyle: TextStyle(color: Colors.black),
           iconTheme: IconThemeData(color: Colors.black),
         ),
+        buttonTheme: ButtonThemeData(
+          buttonColor: darkBluish,
+          // Additional button styles can be customized here
+        ),
       );
   static ThemeData darkTheme(BuildContext context) => ThemeData(
-        brightness: Brightness.dark, //works when working in dark mode
+    brightness: Brightness.dark,
+        fontFamily: GoogleFonts.roboto().fontFamily,
+        cardColor: Colors.black,
+        canvasColor: gray,
+        appBarTheme: const AppBarTheme(
+          color: Colors.white,
+          elevation: 0.0,
+          titleTextStyle: TextStyle(color: Color.fromARGB(255, 255, 255, 255)),
+          iconTheme: IconThemeData(color: Color.fromARGB(255, 255, 255, 255)),
+        ), //works when working in dark mode
+        buttonTheme: ButtonThemeData(
+          buttonColor: lightBluish,
+          // Additional button styles can be customized here
+        ),
       );
 // colors
   static Color creamColor = Color(0xfff5f5f5);
   static Color darkBluish = Color.fromARGB(255, 20, 23, 199);
+  static Color gray = Vx.gray900;
+  static Color lightBluish = Vx.blue300;
 }

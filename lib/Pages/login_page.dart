@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_catalog/Pages/homepage.dart';
 import 'package:flutter_catalog/utils/routes.dart';
+import 'package:velocity_x/velocity_x.dart';
 
 class LoginPage extends StatefulWidget {
   @override
@@ -33,7 +34,7 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Material(
-        color: Colors.white,
+        color: context.canvasColor,
         child: SingleChildScrollView(
           //wrapping krne se agr screen ka size chota hoga toh scroll ho jaega
           child: Form(

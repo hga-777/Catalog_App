@@ -79,6 +79,6 @@ class CatalogItem extends StatelessWidget {
           ))
         ],
       ),
-    ).white.rounded.square(150).make().py16();
+    ).color(context.cardColor).rounded.square(150).make().py16();
   } //py se padding y direction me , rounded se jo continer h uska edge round ho gya
 }

@@ -14,7 +14,7 @@ class catalogHeader extends StatelessWidget {
                 .text
                 .xl5
                 .bold
-                .color(MyTheme.darkBluish)
+                // .color(MyTheme.darkBluish)
                 .make(), //yeh saara velocity_x waale se ho rha h
             //isme . lga kr properties daal sakte hai
             "Trending products".text.make(),

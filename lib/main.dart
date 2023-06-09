@@ -5,7 +5,7 @@ import 'package:flutter_catalog/widgets/theme.dart';
 import 'Pages/cart_page.dart';
 import 'Pages/homepage.dart';
 import 'package:google_fonts/google_fonts.dart'; //added to use google fonts (pub.dev)
-import 'widgets/theme.dart';
+// import 'widgets/theme.dart';
 void main() {
   runApp(MyApp());
 }

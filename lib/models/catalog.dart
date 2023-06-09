@@ -6,7 +6,12 @@ import 'package:flutter/material.dart';
 
 // dart data convertor extension has been used
 class CatalogModel {
-  static List<Items> items=[];
+  static List<Items> items = [];
+
+  //get item by id
+  static Items getByID(int id) =>
+      items.firstWhere((element) => element.id == id, orElse: null);
+  static Items getByPosition(int pos) => items[pos];
 }
 
 class Items {
@@ -18,12 +23,12 @@ class Items {
   final String image;
 
   Items({
-      required this.id,
-      required this.name,
-      required this.desc,
-      required this.price,
-      required this.color,
-      required this.image,
+    required this.id,
+    required this.name,
+    required this.desc,
+    required this.price,
+    required this.color,
+    required this.image,
   });
 
   Items copyWith({

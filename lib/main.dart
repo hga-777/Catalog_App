@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
       theme: MyTheme.lightTheme(context),
       darkTheme: MyTheme.darkTheme(context),
       debugShowCheckedModeBanner: false, //yeh krne se side me jo debug likha h woh gayab ho jaega
-      initialRoute: "/login", //intial strting page
+      initialRoute: "/home", //intial strting page
       routes: {
         //yeh rasta batata h ki is page ke baad kon sa page jaega
         "/": (context) => LoginPage(), //yeh starting address

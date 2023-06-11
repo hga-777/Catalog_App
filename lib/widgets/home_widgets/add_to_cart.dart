@@ -6,30 +6,25 @@ import '../../models/cart.dart';
 import '../../models/catalog.dart';
 import '../theme.dart';
 
-class AddToCart extends StatefulWidget {
+class AddToCart extends StatelessWidget {
   final Items catalog;
-  const AddToCart({
+   AddToCart({
     super.key,
     required this.catalog,
   });
 
-  @override
-  State<AddToCart> createState() => _AddToCartState();
-}
-
-class _AddToCartState extends State<AddToCart> {
   final _cart = CartModel();
   @override
   Widget build(BuildContext context) {
-    bool isInCart = _cart.items.contains(widget.catalog) ?? false;
+    bool isInCart = _cart.items.contains(catalog) ?? false;
     return ElevatedButton(
       onPressed: () {
         if(!isInCart){
         isInCart = isInCart.toggle();
         final _catalog = CatalogModel();
-        _cart.add(widget.catalog);
+        _cart.add(catalog);
         _cart.catalog = _catalog;
-        setState(() {});
+        // setState(() {});
         }
       },
       style: ButtonStyle(

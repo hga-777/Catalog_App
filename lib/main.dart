@@ -1,13 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_catalog/Pages/login_page.dart';
+import 'package:flutter_catalog/core/store.dart';
 import 'package:flutter_catalog/utils/routes.dart';
 import 'package:flutter_catalog/widgets/theme.dart';
+import 'package:velocity_x/velocity_x.dart';
 import 'Pages/cart_page.dart';
 import 'Pages/homepage.dart';
 import 'package:google_fonts/google_fonts.dart'; //added to use google fonts (pub.dev)
 // import 'widgets/theme.dart';
 void main() {
-  runApp(MyApp());
+  runApp(VxState(
+    store: MyStore(),
+    child: MyApp()));
 }
 
 class MyApp extends StatelessWidget {

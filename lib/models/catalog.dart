@@ -7,9 +7,9 @@ import 'package:flutter/material.dart';
 // dart data convertor extension has been used
 class CatalogModel {
 
-  static final catModel  = CatalogModel._internal();    //singleton banaya
-CatalogModel._internal();
-factory CatalogModel()=> catModel;
+//   static final catModel  = CatalogModel._internal();    //singleton banaya
+// CatalogModel._internal();
+// factory CatalogModel()=> catModel;
 
 
   static List<Items> items = [];

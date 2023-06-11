@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_catalog/models/cart.dart';
 import 'package:velocity_x/velocity_x.dart';
 
 import '../../Pages/home_details.dart';
@@ -61,18 +62,7 @@ class CatalogItem extends StatelessWidget {
                 buttonPadding: EdgeInsets.zero,
                 children: [
                   "\$${catalog.price}".text.bold.xl.make(),
-                  ElevatedButton(
-                    onPressed: () {},
-                    style: ButtonStyle(
-                        backgroundColor: MaterialStateProperty.all(
-                          MyTheme.darkBluish,
-                        ),
-                        shape: MaterialStateProperty.all(
-                          //aa lgane ka mtlb agr press kro ya n karo
-                          StadiumBorder(),
-                        )),
-                    child: "Compare".text.make(),
-                  )
+                  _AddToCart(catalog: catalog)
                 ],
               ).pOnly(right: 8.0)
             ],
@@ -81,4 +71,41 @@ class CatalogItem extends StatelessWidget {
       ),
     ).color(context.cardColor).rounded.square(150).make().py16();
   } //py se padding y direction me , rounded se jo continer h uska edge round ho gya
+}
+
+class _AddToCart extends StatefulWidget {
+  final Items catalog;
+  const _AddToCart({
+    super.key,
+    required this.catalog,
+  });
+
+  @override
+  State<_AddToCart> createState() => _AddToCartState();
+}
+
+class _AddToCartState extends State<_AddToCart> {
+  bool isAdded = false;
+  @override
+  Widget build(BuildContext context) {
+    return ElevatedButton(
+      onPressed: () {
+        isAdded = isAdded.toggle();
+        final _catalog = CatalogModel();
+        final _cart = CartModel();
+        _cart.add(widget.catalog);
+        _cart.catalog = _catalog;
+        setState(() {});
+      },
+      style: ButtonStyle(
+          backgroundColor: MaterialStateProperty.all(
+            MyTheme.darkBluish,
+          ),
+          shape: MaterialStateProperty.all(
+            //aa lgane ka mtlb agr press kro ya n karo
+            StadiumBorder(),
+          )),
+      child: isAdded ? Icon(Icons.done) : "Track".text.make(),
+    );
+  }
 }

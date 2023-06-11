@@ -1,6 +1,11 @@
 import 'package:flutter_catalog/models/catalog.dart';
 
 class CartModel {
+static final cartModel  = CartModel._internal();    //singleton banaya
+CartModel._internal();
+factory CartModel()=> cartModel;
+
+
   // catalog field
   CatalogModel _catalog = CatalogModel();   //late CatalogModel _catalog;
 

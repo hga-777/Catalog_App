@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_catalog/core/store.dart';
+import 'package:flutter_catalog/models/cart.dart';
 import 'package:flutter_catalog/utils/routes.dart';
 import 'package:flutter_catalog/widgets/drawer.dart';
 import 'package:flutter_catalog/widgets/item_widgets.dart';
@@ -44,33 +46,38 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+    final _cart = (VxState.store as MyStore).cart;
     return Scaffold(
-      backgroundColor: context.canvasColor,
-      floatingActionButton: FloatingActionButton(  //can be changed later
-        onPressed: () => Navigator.pushNamed(context, MyRoute.cartRoute),
-        backgroundColor: MyTheme.darkBluish, // Access the buttonColor property
-        child: Icon(CupertinoIcons.cart , color: Colors.white,),  
-      ),
+        backgroundColor: context.canvasColor,
+        floatingActionButton: VxBuilder(
+          mutations : {AddMutation,RemoveMutation},
+          builder : (ctx,dynamic _,__) => FloatingActionButton(
+            //can be changed later
+            onPressed: () => Navigator.pushNamed(context, MyRoute.cartRoute),
+            backgroundColor:
+                MyTheme.darkBluish, // Access the buttonColor property
+            child: Icon(
+              CupertinoIcons.cart,
+              color: Colors.white,
+            ),
+          ).badge(color: Vx.black, size: 20 , count: _cart.items.length , textStyle: TextStyle(color: Vx.white)),
+        ),
         body: SafeArea(
-      //yeh uper me battery and niche me jo mobile ka rehta h
-      child: Container(
-        padding: Vx.m32, //saare trf se 32 ka padding kr dega
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,  //isse mera jo v text aana h woh left se start hoga
-          children: [
-             catalogHeader(),
-            if (CatalogModel.items != null && CatalogModel.items.isNotEmpty)
+          //yeh uper me battery and niche me jo mobile ka rehta h
+          child: Container(
+            padding: Vx.m32, //saare trf se 32 ka padding kr dega
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment
+                  .start, //isse mera jo v text aana h woh left se start hoga
+              children: [
+                catalogHeader(),
+                if (CatalogModel.items != null && CatalogModel.items.isNotEmpty)
                   CatalogList().expand()
                 else
-                    CircularProgressIndicator().centered().py16().expand(),             
-          ],
-        ),
-      ),
-    ));
+                  CircularProgressIndicator().centered().py16().expand(),
+              ],
+            ),
+          ),
+        ));
   }
 }
-
-
-
-
-
